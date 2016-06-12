@@ -1,9 +1,15 @@
 import {Component} from 'angular2/core';
-import {CoursesComponent} from "./courses.component";
+import {BannerComponent} from "./banner.component";
+import {LeftPanelComponent} from "./left_panel.component";
+import {RightPanelComponent} from "./right_panel.component";
 
 @Component({
     selector: 'my-app',
-    template: '<h1>My First Angular 2 App...yay</h1><courses></courses>',
-    directives: [CoursesComponent]
+    template: `
+        <link rel="stylesheet" href="app/stylesheets/main.css">
+        <banner></banner>
+        <left-panel></left-panel>
+        <right-panel></right-panel>`,
+    directives: [BannerComponent, LeftPanelComponent, RightPanelComponent]
 })
 export class AppComponent { }
