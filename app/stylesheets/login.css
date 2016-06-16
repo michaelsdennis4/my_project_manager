@@ -1,4 +1,7 @@
 @import 'main.css';
+.top-link {
+  text-align: center;
+}
 .title {
   width: 100%;
   font-size: 36px;

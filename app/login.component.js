@@ -25,6 +25,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 function LoginComponent() {
                 }
                 LoginComponent.prototype.login = function () {
+                    location.href = "/dashboard";
                 };
                 LoginComponent = __decorate([
                     core_1.Component({

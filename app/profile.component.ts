@@ -8,7 +8,7 @@ import {Component} from 'angular2/core';
     selector: 'profile',
     template: `
         <link rel="stylesheet" href="app/stylesheets/login.css">
-        <a href="/dashboard">Dashboard</a>
+        <div class="top-link"><a href="/dashboard">Dashboard</a></div>
 	    <div class="container profile-caption" id="profile-caption">
 	       	Edit My Profile
 	    </div>

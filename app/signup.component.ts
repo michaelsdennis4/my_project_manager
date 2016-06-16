@@ -8,7 +8,7 @@ import {Component} from 'angular2/core';
     selector: 'sign-up',
     template: `
         <link rel="stylesheet" href="app/stylesheets/login.css">
-        <a href="/">Home</a>
+        <div class="top-link"><a href="/">Home</a></div>
 	    <div class="container profile-caption" id="signup-caption">
 	    	Sign Up for a New Account
 	    </div>
