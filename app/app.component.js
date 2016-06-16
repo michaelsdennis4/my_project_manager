@@ -1,4 +1,4 @@
-System.register(['angular2/core', "angular2/router", "./login.component", "./dashboard.component"], function(exports_1, context_1) {
+System.register(['angular2/core', "angular2/router", "./login.component", "./dashboard.component", "./signup.component", "./profile.component"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', "angular2/router", "./login.component", "./das
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, login_component_1, dashboard_component_1;
+    var core_1, router_1, login_component_1, dashboard_component_1, signup_component_1, profile_component_1;
     var AppComponent;
     return {
         setters:[
@@ -25,6 +25,12 @@ System.register(['angular2/core', "angular2/router", "./login.component", "./das
             },
             function (dashboard_component_1_1) {
                 dashboard_component_1 = dashboard_component_1_1;
+            },
+            function (signup_component_1_1) {
+                signup_component_1 = signup_component_1_1;
+            },
+            function (profile_component_1_1) {
+                profile_component_1 = profile_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -33,6 +39,8 @@ System.register(['angular2/core', "angular2/router", "./login.component", "./das
                 AppComponent = __decorate([
                     router_1.RouteConfig([
                         { path: '/login', name: 'Login', component: login_component_1.LoginComponent, useAsDefault: true },
+                        { path: '/signup', name: 'SignUp', component: signup_component_1.SignUpComponent },
+                        { path: '/profile', name: 'Profile', component: profile_component_1.ProfileComponent },
                         { path: '/dashboard', name: 'Dashboard', component: dashboard_component_1.DashboardComponent },
                         { path: '/*other', name: 'Other', redirectTo: ['Login'] }
                     ]),

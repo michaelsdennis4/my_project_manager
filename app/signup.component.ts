@@ -39,4 +39,4 @@ import {Component} from 'angular2/core';
 	    	<p class="submit-message" id="signup-message"></p>
 	    </div>`
 })
-export class SignupComponent {}
+export class SignUpComponent {}

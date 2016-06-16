@@ -14,26 +14,26 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var SignupComponent;
+    var SignUpComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            SignupComponent = (function () {
-                function SignupComponent() {
+            SignUpComponent = (function () {
+                function SignUpComponent() {
                 }
-                SignupComponent = __decorate([
+                SignUpComponent = __decorate([
                     core_1.Component({
                         selector: 'sign-up',
                         template: "\n        <link rel=\"stylesheet\" href=\"app/stylesheets/login.css\">\n        <a href=\"/\">Home</a>\n\t    <div class=\"container profile-caption\" id=\"signup-caption\">\n\t    \tSign Up for a New Account\n\t    </div>\n\t    <div class=\"container profile-credentials\" id=\"signup-credentials\">\n\t    \t<form class=\"profile-form\" method=\"post\" action=\"/users\">\n\t    \t\t<label for=\"first_name\">First Name:</label>\n\t    \t\t<br>\n\t    \t\t<input type=\"text\" name=\"first_name\" placeholder=\"First Name\"/>\n\t    \t\t<br><br>\n\t    \t\t<label for=\"last_name\">Last Name:</label>\n\t    \t\t<br>\n\t    \t\t<input type=\"text\" name=\"last_name\" placeholder=\"Last Name\"/>\n\t    \t\t<br><br>\n\t    \t\t<label for=\"email\">E-mail:</label>\n\t    \t\t<br>\n\t    \t\t<input type=\"text\" name=\"email\" placeholder=\"E-mail\"/>\n\t\t    \t<br><br>\n\t\t    \t<label for=\"password\">Password:</label>\n\t\t    \t<br>\n\t\t    \t<input type=\"password\" name=\"password\" placeholder=\"Password\"/>\n\t\t    \t<br><br>\n\t\t    \t<label for=\"password\">Confirm Password:</label>\n\t\t    \t<br>\n\t\t    \t<input type=\"password\" name=\"confirm_password\" placeholder=\"Confirm Password\"/>\n\t\t    \t<br><br>\n\t\t    \t<input class=\"profile-submit\" type=\"submit\" id=\"signup-submit\" value=\"Sign Up\"/>\n\t    \t</form>\n\t    \t<p class=\"submit-message\" id=\"signup-message\"></p>\n\t    </div>"
                     }), 
                     __metadata('design:paramtypes', [])
-                ], SignupComponent);
-                return SignupComponent;
+                ], SignUpComponent);
+                return SignUpComponent;
             }());
-            exports_1("SignupComponent", SignupComponent);
+            exports_1("SignUpComponent", SignUpComponent);
         }
     }
 });
