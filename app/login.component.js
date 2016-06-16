@@ -24,10 +24,12 @@ System.register(['angular2/core'], function(exports_1, context_1) {
             LoginComponent = (function () {
                 function LoginComponent() {
                 }
+                LoginComponent.prototype.login = function () {
+                };
                 LoginComponent = __decorate([
                     core_1.Component({
                         selector: 'login',
-                        template: "\n        <link rel=\"stylesheet\" href=\"app/stylesheets/login.css\">\n        <div class=\"container title\" id=\"title\">\n\t\t    Product Development Manager\n\t    </div>\n\t    <div class=\"container profile-credentials\" id=\"credentials\">\n\t    \tLogin\n\t\t    <form class=\"profile-form\" method=\"get\" action=\"/dashboard\">\n\t\t    \t<label for=\"email\">E-mail:</label>\n\t\t    \t<br>\n\t\t    \t<input type=\"text\" name=\"email\" placeholder=\"E-mail\"/>\n\t\t    \t<br><br>\n\t\t    \t<label for=\"password\">Password:</label>\n\t\t    \t<br>\n\t\t\t    <input type=\"password\" name=\"password\" placeholder=\"Password\"/>\n\t\t\t    <br><br>\n\t\t    \t<input class=\"profile-submit\" type=\"submit\" id=\"login-submit\" value=\"Log In\"/>\n\t\t    </form>\n\t\t    <p class=\"submit-message\" id=\"login-message\"></p>\n\t    </div>\n\t    <div class=\"container signup\" id=\"signup\">\n\t    \t<a href=\"/signup\">Sign Up</a>\n\t    </div>\n"
+                        template: "\n        <link rel=\"stylesheet\" href=\"app/stylesheets/login.css\">\n        <div class=\"container title\" id=\"title\">\n\t\t    Product Development Manager\n\t    </div>\n\t    <div class=\"container profile-credentials\" id=\"credentials\">\n\t    \tLogin\n\t\t    <form class=\"profile-form\" method=\"get\" action=\"/dashboard\">\n\t\t    \t<label for=\"email\">E-mail:</label>\n\t\t    \t<br>\n\t\t    \t<input type=\"text\" name=\"email\" placeholder=\"E-mail\"/>\n\t\t    \t<br><br>\n\t\t    \t<label for=\"password\">Password:</label>\n\t\t    \t<br>\n\t\t\t    <input type=\"password\" name=\"password\" placeholder=\"Password\"/>\n\t\t\t    <br><br>\n\t\t    \t<input class=\"profile-submit\" type=\"submit\" id=\"login-submit\" value=\"Log In\" (click)=\"login()\"/>\n\t\t    </form>\n\t\t    <p class=\"submit-message\" id=\"login-message\"></p>\n\t    </div>\n\t    <div class=\"container signup\" id=\"signup\">\n\t    \t<a href=\"/signup\">Sign Up</a>\n\t    </div>"
                     }), 
                     __metadata('design:paramtypes', [])
                 ], LoginComponent);

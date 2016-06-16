@@ -1,14 +1,17 @@
 import {Component} from 'angular2/core';
-import {BannerComponent} from "./banner.component";
-import {LeftPanelComponent} from "./left_panel.component";
-import {RightPanelComponent} from "./right_panel.component";
-import {LoginComponent} from "./login.component";
+import {RouteConfig, ROUTER_DIRECTIVES} from "angular2/router";
 
+import {LoginComponent} from "./login.component";
+import {DashboardComponent} from "./dashboard.component";
+
+@RouteConfig([
+    {path: '/login', name: 'Login', component: LoginComponent, useAsDefault: true },
+    {path: '/dashboard', name: 'Dashboard', component: DashboardComponent },
+    {path: '/*other', name: 'Other', redirectTo: ['Login']}
+])
 @Component({
     selector: 'my-app',
-    template: `
-        <link rel="stylesheet" href="app/stylesheets/main.css">
-        <login></login>`,
-    directives: [LoginComponent]
+    template: '<router-outlet></router-outlet>',
+    directives: [ROUTER_DIRECTIVES]
 })
 export class AppComponent { }

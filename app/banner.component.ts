@@ -7,7 +7,7 @@ import {Component} from 'angular2/core';
 @Component({
     selector: 'banner',
     template: `
-        <link rel="stylesheet" href="app/stylesheets/banner.css">
+        <link rel="stylesheet" href="app/stylesheets/dashboard.css">
         <div class="container banner" id="banner">
             <div class="container upper-banner" id="upper-banner">
 			    <a href="/projects/new">New Project</a>

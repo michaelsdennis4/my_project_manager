@@ -1,5 +1,5 @@
 /**
- * Created by Michael on 6/6/16.
+ * Created by Michael on 6/15/16.
  */
 System.register(['angular2/core'], function(exports_1, context_1) {
     "use strict";
@@ -14,27 +14,27 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var BannerComponent;
+    var TaskListComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            BannerComponent = (function () {
-                function BannerComponent() {
+            TaskListComponent = (function () {
+                function TaskListComponent() {
                 }
-                BannerComponent = __decorate([
+                TaskListComponent = __decorate([
                     core_1.Component({
-                        selector: 'banner',
-                        template: "\n        <link rel=\"stylesheet\" href=\"app/stylesheets/dashboard.css\">\n        <div class=\"container banner\" id=\"banner\">\n            <div class=\"container upper-banner\" id=\"upper-banner\">\n\t\t\t    <a href=\"/projects/new\">New Project</a>\n\t\t    \t<a href=\"/profile\">Edit Profile</a>\n\t\t    \t<a href=\"/logout\">Logout</a>\n\t\t    </div>\n\t\t    <div class=\"container lower-banner\" id=\"lower-banner\">\n\t\t    \tProduct Development Manager Dashboard\n\t\t    </div>\n\t    </div>"
+                        selector: 'task-list',
+                        template: "\n        <link rel=\"stylesheet\" href=\"app/stylesheets/dashboard.css\">\n        <div class=\"container task-list\" id=\"task-list\">\n\t\t    Tasks\n\t\t\t<div class=\"container task-list-item\">\n\t\t\t    Sample Task\n\t\t\t</div>\n\t\t</div>"
                     }), 
                     __metadata('design:paramtypes', [])
-                ], BannerComponent);
-                return BannerComponent;
+                ], TaskListComponent);
+                return TaskListComponent;
             }());
-            exports_1("BannerComponent", BannerComponent);
+            exports_1("TaskListComponent", TaskListComponent);
         }
     }
 });
-//# sourceMappingURL=banner.component.js.map
+//# sourceMappingURL=task_list.component.js.map

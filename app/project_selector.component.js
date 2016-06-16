@@ -1,5 +1,5 @@
 /**
- * Created by Michael on 6/6/16.
+ * Created by Michael on 6/15/16.
  */
 System.register(['angular2/core'], function(exports_1, context_1) {
     "use strict";
@@ -14,27 +14,27 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var BannerComponent;
+    var ProjectSelectorComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            BannerComponent = (function () {
-                function BannerComponent() {
+            ProjectSelectorComponent = (function () {
+                function ProjectSelectorComponent() {
                 }
-                BannerComponent = __decorate([
+                ProjectSelectorComponent = __decorate([
                     core_1.Component({
-                        selector: 'banner',
-                        template: "\n        <link rel=\"stylesheet\" href=\"app/stylesheets/dashboard.css\">\n        <div class=\"container banner\" id=\"banner\">\n            <div class=\"container upper-banner\" id=\"upper-banner\">\n\t\t\t    <a href=\"/projects/new\">New Project</a>\n\t\t    \t<a href=\"/profile\">Edit Profile</a>\n\t\t    \t<a href=\"/logout\">Logout</a>\n\t\t    </div>\n\t\t    <div class=\"container lower-banner\" id=\"lower-banner\">\n\t\t    \tProduct Development Manager Dashboard\n\t\t    </div>\n\t    </div>"
+                        selector: 'project-selector',
+                        template: "\n        <link rel=\"stylesheet\" href=\"app/stylesheets/dashboard.css\">\n        <div class=\"container project-selection\" id=\"project-selection\">\n\t\t\t<form method=\"\">\n\t\t\t\t<label for=\"project-select\">Select A Project:</label>\n\t\t\t\t<br>\n\t\t\t\t<select name=\"project-select\">\n\t\t\t\t\t<option>Sample Project</option>\n\t\t\t\t</select>\n\t\t\t</form>\n\t\t\t<form method=\"\">\n\t\t\t\t<label for=\"version-select\">Version/Branch:</label>\n\t\t\t\t<br>\n\t\t\t\t<select name=\"version-select\">\n\t\t\t\t\t<option>Sample Version</option>\n\t\t\t\t</select>\n\t\t\t</form>\n\t\t</div>"
                     }), 
                     __metadata('design:paramtypes', [])
-                ], BannerComponent);
-                return BannerComponent;
+                ], ProjectSelectorComponent);
+                return ProjectSelectorComponent;
             }());
-            exports_1("BannerComponent", BannerComponent);
+            exports_1("ProjectSelectorComponent", ProjectSelectorComponent);
         }
     }
 });
-//# sourceMappingURL=banner.component.js.map
+//# sourceMappingURL=project_selector.component.js.map

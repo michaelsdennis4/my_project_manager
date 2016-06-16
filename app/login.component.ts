@@ -22,13 +22,16 @@ import {Component} from 'angular2/core';
 		    	<br>
 			    <input type="password" name="password" placeholder="Password"/>
 			    <br><br>
-		    	<input class="profile-submit" type="submit" id="login-submit" value="Log In"/>
+		    	<input class="profile-submit" type="submit" id="login-submit" value="Log In" (click)="login()"/>
 		    </form>
 		    <p class="submit-message" id="login-message"></p>
 	    </div>
 	    <div class="container signup" id="signup">
 	    	<a href="/signup">Sign Up</a>
-	    </div>
-`
+	    </div>`
 })
-export class LoginComponent {}
+export class LoginComponent {
+    login() {
+
+    }
+}

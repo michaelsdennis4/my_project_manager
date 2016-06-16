@@ -1,5 +1,5 @@
 /**
- * Created by Michael on 6/12/16.
+ * Created by Michael on 6/15/16.
  */
 System.register(['angular2/core'], function(exports_1, context_1) {
     "use strict";
@@ -14,27 +14,27 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var RightPanelComponent;
+    var WireframesComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            RightPanelComponent = (function () {
-                function RightPanelComponent() {
+            WireframesComponent = (function () {
+                function WireframesComponent() {
                 }
-                RightPanelComponent = __decorate([
+                WireframesComponent = __decorate([
                     core_1.Component({
-                        selector: 'right-panel',
-                        template: "\n        <link rel=\"stylesheet\" href=\"app/stylesheets/right_panel.css\">\n        <div class=\"container right-panel\" id=\"right-panel\">\n\t\t<div class=\"container task-list\" id=\"task-list\">\n\t\t\tTasks\n\t\t\t<div class=\"container task-list-item\">\n\t\t\t\tSample Task\n\t\t\t</div>\n\t\t</div>\n\t</div>"
+                        selector: 'wireframes',
+                        template: "\n        <link rel=\"stylesheet\" href=\"app/stylesheets/dashboard.css\">\n        <div class=\"container wireframes\" id=\"wireframes\">\n\t\t\tWireframes\n\t\t\t<ul class=\"wireframes\" id=\"wireframes-list\">\n\t\t\t\t<li class=\"wireframe\" id=\"wireframe-item\">\n\t\t\t\t\t<a href=\"\">Sample Wireframe</a>\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t</div>"
                     }), 
                     __metadata('design:paramtypes', [])
-                ], RightPanelComponent);
-                return RightPanelComponent;
+                ], WireframesComponent);
+                return WireframesComponent;
             }());
-            exports_1("RightPanelComponent", RightPanelComponent);
+            exports_1("WireframesComponent", WireframesComponent);
         }
     }
 });
-//# sourceMappingURL=right_panel.component.js.map
+//# sourceMappingURL=wireframes.component.js.map
