@@ -1,5 +1,11 @@
 {
   "name": "product-development-manager",
+  "description": "jira lite",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelsdennis4/project_manager.git"
+  },
+  "author": "Michael Dennis",
   "version": "1.0.0",
   "scripts": {
     "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
@@ -14,11 +20,15 @@
     "angular2": "2.0.0-beta.7",
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.1",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.4.2",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.3",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
+    "method-override": "^2.3.6",
     "mongodb": "^2.1.18",
+    "path": "^0.12.7",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.2",
     "systemjs": "0.19.22",
