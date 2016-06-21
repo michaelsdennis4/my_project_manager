@@ -3,11 +3,14 @@
  */
 
 import {Component} from 'angular2/core';
+import {Router, ROUTER_DIRECTIVES} from "angular2/router";
+
 import {ProjectSelectorComponent} from "./project_selector.component";
 import {WireframesComponent} from "./wireframes.component";
 import {UserStoriesComponent} from "./user_stories.component";
 import {BannerComponent} from "./banner.component";
 import {TaskListComponent} from "./task_list.component";
+
 
 @Component({
     selector: 'dashboard',
@@ -26,6 +29,6 @@ import {TaskListComponent} from "./task_list.component";
         <div class="container right-panel" id="right-panel">
 		    <task-list></task-list>
 	    </div>`,
-    directives: [BannerComponent, ProjectSelectorComponent, WireframesComponent, UserStoriesComponent, TaskListComponent]
+    directives: [ROUTER_DIRECTIVES, ProjectSelectorComponent, WireframesComponent, UserStoriesComponent, TaskListComponent]
 })
 export class DashboardComponent {}

@@ -8,10 +8,7 @@
   "author": "Michael Dennis",
   "version": "1.0.0",
   "scripts": {
-    "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "lite": "lite-server",
+    "start": "node server",
     "typings": "typings",
     "postinstall": "typings install"
   },
@@ -38,6 +35,7 @@
     "concurrently": "^2.0.0",
     "lite-server": "^2.1.0",
     "morgan": "^1.7.0",
+    "nodemon": "^1.9.2",
     "typescript": "^1.7.5"
   }
 }

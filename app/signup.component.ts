@@ -3,12 +3,13 @@
  */
 
 import {Component} from 'angular2/core';
+import {ROUTER_DIRECTIVES} from "angular2/router";
 
 @Component({
     selector: 'sign-up',
     template: `
         <link rel="stylesheet" href="app/stylesheets/login.css">
-        <div class="top-link"><a href="/">Home</a></div>
+        <div class="top-link"><a [routerLink]="['Login']">Home</a></div>
 	    <div class="container profile-caption" id="signup-caption">
 	    	Sign Up for a New Account
 	    </div>
@@ -37,6 +38,7 @@ import {Component} from 'angular2/core';
 		    	<input class="profile-submit" type="submit" id="signup-submit" value="Sign Up"/>
 	    	</form>
 	    	<p class="submit-message" id="signup-message"></p>
-	    </div>`
+	    </div>`,
+    directives: [ROUTER_DIRECTIVES]
 })
 export class SignUpComponent {}

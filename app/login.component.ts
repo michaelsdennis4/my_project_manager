@@ -3,6 +3,7 @@
  */
 
 import {Component} from 'angular2/core';
+import {Router, ROUTER_DIRECTIVES} from "angular2/router";
 
 @Component({
     selector: 'login',
@@ -27,11 +28,14 @@ import {Component} from 'angular2/core';
 		    <p class="submit-message" id="login-message"></p>
 	    </div>
 	    <div class="container signup" id="signup">
-	    	<a href="/signup">Sign Up</a>
-	    </div>`
+	    	<a [routerLink]="['SignUp']">Sign Up</a>
+	    </div>`,
+    directives: [ROUTER_DIRECTIVES]
 })
 export class LoginComponent {
+    constructor(private _router: Router) { }
+
     login() {
-        location.href="/dashboard";
+        this._router.navigate(['Dashboard']);
     }
 }
