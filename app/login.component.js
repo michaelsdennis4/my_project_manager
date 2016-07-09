@@ -38,13 +38,13 @@ System.register(['angular2/core', "angular2/router", "./login.service", "angular
                 }
                 LoginComponent.prototype.onSubmit = function (form) {
                     var self = this;
-                    this._loginService.authenticate(form.value.email, form.value.password).subscribe(function (result) {
+                    this._loginService.authenticate(form).subscribe(function (result) {
                         if (result.message === 'ok') {
                             console.log('authentication success');
                             self._router.navigate(['Dashboard']);
                         }
                         else {
-                            console.log('authentication failure');
+                            console.log(result.message);
                             self.message = result.message;
                         }
                     });
@@ -52,7 +52,8 @@ System.register(['angular2/core', "angular2/router", "./login.service", "angular
                 LoginComponent = __decorate([
                     core_1.Component({
                         selector: 'login',
-                        template: "\n        <link rel=\"stylesheet\" href=\"app/stylesheets/login.css\">\n        <div class=\"container title\" id=\"title\">\n\t\t    Product Development Manager\n\t    </div>\n\t    <div class=\"container profile-credentials\" id=\"credentials\">\n\t    \tLogin\n\t\t    <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f.form)\" class=\"profile-form\" method=\"get\" action=\"/dashboard\">\n\t\t    \t<label for=\"email\">E-mail:</label>\n\t\t    \t<br>\n\t\t    \t<input type=\"text\" name=\"email\" ngControl=\"email\" placeholder=\"E-mail\"/>\n\t\t    \t<br><br>\n\t\t    \t<label for=\"password\">Password:</label>\n\t\t    \t<br>\n\t\t\t    <input type=\"password\" name=\"password\" ngControl=\"password\" placeholder=\"Password\"/>\n\t\t\t    <br><br>\n\t\t    \t<input class=\"profile-submit\" type=\"submit\" id=\"login-submit\" value=\"Log In\"/>\n\t\t    </form>\n\t\t    <p class=\"submit-message\" id=\"login-message\">{{message}}</p>\n\t    </div>\n\t    <div class=\"container signup\" id=\"signup\">\n\t    \t<a [routerLink]=\"['SignUp']\">Sign Up</a>\n\t    </div>",
+                        template: "\n        <div class=\"container title\" id=\"title\">\n\t\t    Product Development Manager\n\t    </div>\n\t    <div class=\"container profile-credentials\" id=\"credentials\">\n\t    \tLogin\n\t\t    <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f.form)\" class=\"profile-form\">\n\t\t    \t<label for=\"email\">E-mail:</label>\n\t\t    \t<br>\n\t\t    \t<input type=\"text\" name=\"email\" ngControl=\"email\" placeholder=\"E-mail\"/>\n\t\t    \t<br><br>\n\t\t    \t<label for=\"password\">Password:</label>\n\t\t    \t<br>\n\t\t\t    <input type=\"password\" name=\"password\" ngControl=\"password\" placeholder=\"Password\"/>\n\t\t\t    <br><br>\n\t\t    \t<input class=\"profile-submit\" type=\"submit\" id=\"login-submit\" value=\"Log In\"/>\n\t\t    </form>\n\t\t    <p class=\"submit-message\" id=\"login-message\">{{message}}</p>\n\t    </div>\n\t    <div class=\"container signup\" id=\"signup\">\n\t    \t<a [routerLink]=\"['SignUp']\">Sign Up</a>\n\t    </div>",
+                        styleUrls: ['app/stylesheets/login.css'],
                         directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [login_service_1.LoginService, http_1.HTTP_PROVIDERS]
                     }), 

@@ -3,42 +3,63 @@
  */
 
 import {Component} from 'angular2/core';
-import {ROUTER_DIRECTIVES} from "angular2/router";
+import {Router, ROUTER_DIRECTIVES} from "angular2/router";
+import {LoginService} from "./login.service";
+import {HTTP_PROVIDERS} from "angular2/http";
 
 @Component({
     selector: 'sign-up',
     template: `
-        <link rel="stylesheet" href="app/stylesheets/login.css">
         <div class="top-link"><a [routerLink]="['Login']">Home</a></div>
 	    <div class="container profile-caption" id="signup-caption">
 	    	Sign Up for a New Account
 	    </div>
 	    <div class="container profile-credentials" id="signup-credentials">
-	    	<form class="profile-form" method="post" action="/users">
+	    	<form #f="ngForm" (ngSubmit)="onSubmit(f.form)" class="profile-form">
 	    		<label for="first_name">First Name:</label>
 	    		<br>
-	    		<input type="text" name="first_name" placeholder="First Name"/>
+	    		<input type="text" name="first_name" ngControl="first_name" placeholder="First Name"/>
 	    		<br><br>
 	    		<label for="last_name">Last Name:</label>
 	    		<br>
-	    		<input type="text" name="last_name" placeholder="Last Name"/>
+	    		<input type="text" name="last_name" ngControl="last_name" placeholder="Last Name"/>
 	    		<br><br>
 	    		<label for="email">E-mail:</label>
 	    		<br>
-	    		<input type="text" name="email" placeholder="E-mail"/>
+	    		<input type="text" name="email" ngControl="email" placeholder="E-mail"/>
 		    	<br><br>
 		    	<label for="password">Password:</label>
 		    	<br>
-		    	<input type="password" name="password" placeholder="Password"/>
+		    	<input type="password" name="password" ngControl="password" placeholder="Password"/>
 		    	<br><br>
 		    	<label for="password">Confirm Password:</label>
 		    	<br>
-		    	<input type="password" name="confirm_password" placeholder="Confirm Password"/>
+		    	<input type="password" name="confirm_password" ngControl="confirm_password" placeholder="Confirm Password"/>
 		    	<br><br>
 		    	<input class="profile-submit" type="submit" id="signup-submit" value="Sign Up"/>
 	    	</form>
-	    	<p class="submit-message" id="signup-message"></p>
+	    	<p class="submit-message" id="signup-message">{{message}}</p>
 	    </div>`,
-    directives: [ROUTER_DIRECTIVES]
+    styleUrls: ['app/stylesheets/login.css'],
+    directives: [ROUTER_DIRECTIVES],
+    providers: [LoginService, HTTP_PROVIDERS]
 })
-export class SignUpComponent {}
+export class SignUpComponent {
+    constructor(private _loginService: LoginService, private _router: Router) { }
+    
+    message = "";
+    
+    onSubmit(form) {
+        let self = this;
+        this._loginService.signUp(form).subscribe(result => {
+            if (result.message === 'ok') {
+                console.log('new user created');
+                this._router.navigate(['Dashboard']);
+            } else {
+                console.log(result.message);
+                this.message = result.message;
+            }
+        });
+    }
+    
+}

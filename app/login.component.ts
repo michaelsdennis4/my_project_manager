@@ -10,13 +10,12 @@ import {HTTP_PROVIDERS} from "angular2/http";
 @Component({
     selector: 'login',
     template: `
-        <link rel="stylesheet" href="app/stylesheets/login.css">
         <div class="container title" id="title">
 		    Product Development Manager
 	    </div>
 	    <div class="container profile-credentials" id="credentials">
 	    	Login
-		    <form #f="ngForm" (ngSubmit)="onSubmit(f.form)" class="profile-form" method="get" action="/dashboard">
+		    <form #f="ngForm" (ngSubmit)="onSubmit(f.form)" class="profile-form">
 		    	<label for="email">E-mail:</label>
 		    	<br>
 		    	<input type="text" name="email" ngControl="email" placeholder="E-mail"/>
@@ -32,6 +31,7 @@ import {HTTP_PROVIDERS} from "angular2/http";
 	    <div class="container signup" id="signup">
 	    	<a [routerLink]="['SignUp']">Sign Up</a>
 	    </div>`,
+    styleUrls: ['app/stylesheets/login.css'],
     directives: [ROUTER_DIRECTIVES],
     providers: [LoginService, HTTP_PROVIDERS]
 })
@@ -42,12 +42,12 @@ export class LoginComponent {
 
     onSubmit(form) {
         let self = this;
-        this._loginService.authenticate(form.value.email, form.value.password).subscribe(result => {
+        this._loginService.authenticate(form).subscribe(result => {
             if (result.message === 'ok') {
                 console.log('authentication success');
                 self._router.navigate(['Dashboard']);
             } else {
-                console.log('authentication failure');
+                console.log(result.message);
                 self.message = result.message;
             }
         });

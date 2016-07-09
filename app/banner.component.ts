@@ -10,7 +10,6 @@ import {HTTP_PROVIDERS} from "angular2/http";
 @Component({
     selector: 'banner',
     template: `
-        <link rel="stylesheet" href="app/stylesheets/dashboard.css">
         <div class="container banner" id="banner">
             <div class="container upper-banner" id="upper-banner">
 			    <a href="/projects/new">New Project</a>
@@ -21,6 +20,7 @@ import {HTTP_PROVIDERS} from "angular2/http";
 		    	Product Development Manager Dashboard
 		    </div>
 	    </div>`,
+    styleUrls: ['app/stylesheets/dashboard.css'],
     directives: [ROUTER_DIRECTIVES],
     providers: [LoginService, HTTP_PROVIDERS]
 })

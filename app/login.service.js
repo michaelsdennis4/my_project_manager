@@ -29,14 +29,30 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], fun
                 function LoginService(_http) {
                     this._http = _http;
                 }
-                LoginService.prototype.authenticate = function (email, password) {
+                LoginService.prototype.authenticate = function (form) {
                     var credentials = {
-                        email: email,
-                        password: password
+                        email: form.value.email ? form.value.email : "",
+                        password: form.value.password ? form.value.password : ""
                     };
                     var headers = new http_1.Headers();
                     headers.append('Content-Type', 'application/json');
                     return this._http.post('/authenticate', JSON.stringify(credentials), {
+                        headers: headers
+                    }).map(function (res) { return res.json(); });
+                };
+                LoginService.prototype.signUp = function (form) {
+                    console.log(form.value.first_name);
+                    var credentials = {
+                        email: form.value.email ? form.value.email : "",
+                        first_name: form.value.first_name ? form.value.first_name : "",
+                        last_name: form.value.last_name ? form.value.last_name : "",
+                        password: form.value.password ? form.value.password : "",
+                        confirm_password: form.value.confirm_password ? form.value.confirm_password : ""
+                    };
+                    console.log(credentials);
+                    var headers = new http_1.Headers();
+                    headers.append('Content-Type', 'application/json');
+                    return this._http.post('/users', JSON.stringify(credentials), {
                         headers: headers
                     }).map(function (res) { return res.json(); });
                 };

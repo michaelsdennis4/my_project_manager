@@ -67,6 +67,45 @@ MongoClient.connect(mongoUri, function(error, db) {
         });
     });
 
+    app.post('/users', function(req, res){
+        db.collection('users').find({email: req.body.email}).toArray(function(error, users) {
+            if (users.length > 0) {
+                res.json({message: 'User already exists'});
+            }
+            else if (req.body.password != req.body.confirm_password) {
+                res.json({message: 'Passwords do not match'});
+            }
+            else if (req.body.first_name.length === 0) {
+                res.json({message: 'First name cannot be blank'});
+            }
+            else if (req.body.last_name.length === 0) {
+                res.json({message: 'Last name cannot be blank'});
+            } else if (req.body.email.length === 0) {
+                res.json({message: 'Email cannot be blank'});
+            }
+            else if (req.body.password.length < 6) {
+                res.json({message: 'Password must be at least 6 characters.'});
+            }
+            else {
+                var salt = bcrypt.genSaltSync(10);
+                var hash = bcrypt.hashSync(req.body.password, salt);
+                var new_user = {first_name: req.body.first_name, last_name: req.body.last_name, email: req.body.email, password_digest: hash};
+                db.collection('users').insertOne(new_user, function(error, result) {
+                    if ((!error) && (result)) {
+                        session = req.session;
+                        session.user_id = new_user._id;
+                        new_user.first_name = new_user.first_name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1);});
+                        new_user.last_name = new_user.last_name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1);});
+                        session.username = new_user.first_name +' '+new_user.last_name;
+                        res.json({message: 'ok'});
+                    } else {
+                        res.json({message: 'Error creating user'});
+                    }
+                });
+            }
+        });
+    });
+
     app.get('/logout', function(req, res) {
         req.session.user_id = null;
         req.session.username = null;
