@@ -10,15 +10,18 @@ System.register(['angular2/core', "angular2/router", "./login.component", "./das
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, login_component_1, dashboard_component_1, signup_component_1, profile_component_1;
+    var core_1, router_1, router_2, router_3, core_2, login_component_1, dashboard_component_1, signup_component_1, profile_component_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+                core_2 = core_1_1;
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+                router_2 = router_1_1;
+                router_3 = router_1_1;
             },
             function (login_component_1_1) {
                 login_component_1 = login_component_1_1;
@@ -47,7 +50,8 @@ System.register(['angular2/core', "angular2/router", "./login.component", "./das
                     core_1.Component({
                         selector: 'my-app',
                         template: '<router-outlet></router-outlet>',
-                        directives: [router_1.ROUTER_DIRECTIVES]
+                        directives: [router_1.ROUTER_DIRECTIVES],
+                        providers: [router_1.ROUTER_PROVIDERS, core_2.provide(router_3.LocationStrategy, { useClass: router_2.HashLocationStrategy })]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
