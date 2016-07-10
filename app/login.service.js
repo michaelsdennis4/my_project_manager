@@ -40,22 +40,6 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], fun
                         headers: headers
                     }).map(function (res) { return res.json(); });
                 };
-                LoginService.prototype.signUp = function (form) {
-                    console.log(form.value.first_name);
-                    var credentials = {
-                        email: form.value.email ? form.value.email : "",
-                        first_name: form.value.first_name ? form.value.first_name : "",
-                        last_name: form.value.last_name ? form.value.last_name : "",
-                        password: form.value.password ? form.value.password : "",
-                        confirm_password: form.value.confirm_password ? form.value.confirm_password : ""
-                    };
-                    console.log(credentials);
-                    var headers = new http_1.Headers();
-                    headers.append('Content-Type', 'application/json');
-                    return this._http.post('/users', JSON.stringify(credentials), {
-                        headers: headers
-                    }).map(function (res) { return res.json(); });
-                };
                 LoginService.prototype.logout = function () {
                     return this._http.get('/logout').map(function (res) { return res.json(); });
                 };

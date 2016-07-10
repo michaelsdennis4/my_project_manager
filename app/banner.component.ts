@@ -13,7 +13,7 @@ import {HTTP_PROVIDERS} from "angular2/http";
         <div class="container banner" id="banner">
             <div class="container upper-banner" id="upper-banner">
 			    <a href="/projects/new">New Project</a>
-		    	<a href="/profile">Edit Profile</a>
+		    	<a [routerLink]="['Profile']">Edit Profile</a>
 		    	<a href="" (click)="onLogout">Logout</a>
 		    </div>
 		    <div class="container lower-banner" id="lower-banner">

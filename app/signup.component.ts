@@ -4,7 +4,7 @@
 
 import {Component} from 'angular2/core';
 import {Router, ROUTER_DIRECTIVES} from "angular2/router";
-import {LoginService} from "./login.service";
+import {ProfileService} from "./profile.service";
 import {HTTP_PROVIDERS} from "angular2/http";
 
 @Component({
@@ -42,16 +42,16 @@ import {HTTP_PROVIDERS} from "angular2/http";
 	    </div>`,
     styleUrls: ['app/stylesheets/login.css'],
     directives: [ROUTER_DIRECTIVES],
-    providers: [LoginService, HTTP_PROVIDERS]
+    providers: [ProfileService, HTTP_PROVIDERS]
 })
 export class SignUpComponent {
-    constructor(private _loginService: LoginService, private _router: Router) { }
+    constructor(private _profileService: ProfileService, private _router: Router) { }
     
     message = "";
     
     onSubmit(form) {
         let self = this;
-        this._loginService.signUp(form).subscribe(result => {
+        this._profileService.signUp(form).subscribe(result => {
             if (result.message === 'ok') {
                 console.log('new user created');
                 this._router.navigate(['Dashboard']);

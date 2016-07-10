@@ -5,13 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var MongoDB = require('mongodb');
-
 var app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, ''));
-app.set('view engine', 'ejs');
-app.engine('html', require('ejs').renderFile);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -45,14 +40,12 @@ MongoClient.connect(mongoUri, function(error, db) {
     }
 
     app.post('/authenticate', function(req, res) {
-        console.log(req.body);
         db.collection('users').find({email: req.body.email}).toArray(function(error, results) {
             if ((error) || (results.length == 0)) {
                 res.json({message: 'Incorrect username/password'});
             }
             else {
                 var user = results[0];
-                console.log(user);
                 if (bcrypt.compareSync(req.body.password, user.password_digest) === true) {
                     session = req.session;
                     session.user_id = user._id;
@@ -63,6 +56,16 @@ MongoClient.connect(mongoUri, function(error, db) {
                 } else {
                     res.json({message: 'Incorrect username/password'});
                 }
+            }
+        });
+    });
+
+    app.get('/users', function(req, res){
+        db.collection('users').find({_id: ObjectId(req.session.user_id)}).toArray(function(error, users) {
+            if (users.length === 1) {
+                res.json({user: users[0]})
+            } else {
+                res.json({message: 'User not found'});
             }
         });
     });
@@ -104,6 +107,102 @@ MongoClient.connect(mongoUri, function(error, db) {
                 });
             }
         });
+    });
+
+    app.patch('/users', function(req, res) {
+        if ((req.session.user_id) && (req.session.user_id != null)) {
+            if ((req.body.first_name) && (req.body.first_name.length === 0)) {
+                res.json({message: 'First name cannot be blank'});
+            }
+            else if ((req.body.last_name) && (req.body.last_name.length === 0)) {
+                res.json({message: 'Last name cannot be blank'});
+            }
+            else if ((req.body.email) && (req.body.email.length === 0)) {
+                res.json({message: 'Email cannot be blank'});
+            }
+            else {
+                var updates = {};
+                if (req.body.first_name) {
+                    updates.first_name = req.body.first_name;
+                }
+                if (req.body.last_name) {
+                    updates.last_name = req.body.last_name;
+                }
+                if (req.body.email) {
+                    updates.email = req.body.email;
+                }
+                if (Object.keys(updates).length > 0) {
+                    db.collection('users').updateOne({_id: ObjectId(req.session.user_id)}, {
+                        $set: updates
+                    }, function (error, result) {
+                        if (!error) {
+                            //update session
+                            db.collection('users').find({_id: ObjectId(req.session.user_id)}).toArray(function(error, users) {
+                                if (users.length === 1) {
+                                    var user = users[0];
+                                    var first_name = user.first_name.replace(/\w\S*/g, function (txt) {
+                                        return txt.charAt(0).toUpperCase() + txt.substr(1);
+                                    });
+                                    var last_name = user.last_name.replace(/\w\S*/g, function (txt) {
+                                        return txt.charAt(0).toUpperCase() + txt.substr(1);
+                                    });
+                                    req.session.username = first_name + ' ' + last_name;
+                                    res.json({message: 'ok'});
+                                } else {
+                                    res.json({message: 'login'});
+                                }
+                            });
+                        } else {
+                            res.json({message: 'Error updating profile'});
+                        }
+                    });
+                } else {
+                    res.json({message: 'No updates found'});
+                }
+            }
+        } else {
+            res.json({message: 'login'});
+        }
+    });
+
+    app.patch('/password', function(req, res) {
+        if ((req.session.user_id) && (req.session.user_id != null)) {
+            //find user
+            db.collection('users').find({_id: ObjectId(req.session.user_id)}).toArray(function(error, results) {
+                if ((!error) && (results) && (results.length > 0)) {
+                    var user = results[0];
+                    //check if existing password is correct
+                    if (bcrypt.compareSync(req.body.old_password, user.password_digest) === true) {
+                        //check if password at least 6 characters
+                        if (req.body.new_password.length >= 6) {
+                            //check if new passwords match
+                            if (req.body.new_password === req.body.confirm_new_password) {
+                                //try to update password
+                                var salt = bcrypt.genSaltSync(10);
+                                var hash = bcrypt.hashSync(req.body.new_password, salt);
+                                db.collection('users').update({_id: ObjectId(user._id)}, {$set: {password_digest: hash}}, function(error, result) {
+                                    if ((!error) && (result)) {
+                                        res.json({message: 'ok'});
+                                    } else {
+                                        res.json({message: 'Error updating password'});
+                                    }
+                                });
+                            } else {
+                                res.json({message: 'New passwords do not match'});
+                            }
+                        } else {
+                            res.json({message: 'Password must be at least 6 characters.'});
+                        }
+                    } else {
+                        res.json({message: 'Existing password incorrect'});
+                    }
+                } else {
+                    res.json({message: 'login'});
+                }
+            });
+        } else {
+            res.json({message: 'login'});
+        }
     });
 
     app.get('/logout', function(req, res) {
