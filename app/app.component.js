@@ -49,7 +49,7 @@ System.register(['angular2/core', "angular2/router", "./login.component", "./das
                     ]),
                     core_1.Component({
                         selector: 'my-app',
-                        template: '<router-outlet></router-outlet>',
+                        template: "\n        <div>\n            <router-outlet></router-outlet>\n        </div>",
                         directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [router_1.ROUTER_PROVIDERS, core_2.provide(router_3.LocationStrategy, { useClass: router_2.HashLocationStrategy })]
                     }), 

@@ -45,7 +45,9 @@ System.register(['angular2/core', "angular2/router", "./project_selector.compone
                 DashboardComponent = __decorate([
                     core_1.Component({
                         selector: 'dashboard',
-                        template: "\n        <link rel=\"stylesheet\" href=\"app/stylesheets/dashboard.css\">   \n        <banner></banner>\n        <div class=\"container left-panel\" id=\"left-panel\"> \n\t\t    <div class=\"container upper-left-section\" id=\"upper-left-section\">\n\t\t        <project-selector></project-selector>\t\n\t            <wireframes></wireframes>\n\t\t    </div>\n\t\t    <div class=\"container lower-left-section\" id=\"lower-left-section\">\n\t\t\t    <user-stories></user-stories>\n\t\t    </div>\n\t    </div>    \n        <div class=\"container right-panel\" id=\"right-panel\">\n\t\t    <task-list></task-list>\n\t    </div>",
+                        template: "\n        <div class=\"dashboard\"> \n            <banner></banner>\n            <div class=\"container left-panel\" id=\"left-panel\"> \n                <div class=\"container upper-left-section\" id=\"upper-left-section\">\n                    <project-selector></project-selector>\t\n                    <wireframes></wireframes>\n                </div>\n                <div class=\"container lower-left-section\" id=\"lower-left-section\">\n                    <user-stories></user-stories>\n                </div>\n            </div>    \n            <div class=\"container right-panel\" id=\"right-panel\">\n                <task-list></task-list>\n            </div> \n\t    </div>",
+                        host: { 'class': 'ng-animate dashboardContainer' },
+                        styleUrls: ['app/stylesheets/dashboard.css'],
                         directives: [
                             router_1.ROUTER_DIRECTIVES,
                             project_selector_component_1.ProjectSelectorComponent,

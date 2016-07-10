@@ -41,10 +41,18 @@
       height 30px
       font-size 14px
 
-.signup-link
-  width 100%
-  text-align center
-  font-size 16px
-
 .submit-message
   color red
+
+//transition css
+:host(.signupContainer)
+  display inline-block
+  width 100%
+  -webkit-transition all ease-in 0.5s
+  transition all ease-in 0.5s
+
+:host(.signupContainer.ng-enter)
+  transform translateY(100%)
+
+:host(.signupContainer.ng-enter-active)
+  transform translateY(0)

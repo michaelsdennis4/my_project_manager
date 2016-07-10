@@ -9,7 +9,6 @@ import {DashboardComponent} from "./dashboard.component";
 import {SignUpComponent} from "./signup.component";
 import {ProfileComponent} from "./profile.component";
 
-
 @RouteConfig([
     {path: '/login', name: 'Login', component: LoginComponent, useAsDefault: true },
     {path: '/signup', name: 'SignUp', component: SignUpComponent },
@@ -19,7 +18,10 @@ import {ProfileComponent} from "./profile.component";
 ])
 @Component({
     selector: 'my-app',
-    template: '<router-outlet></router-outlet>',
+    template: `
+        <div>
+            <router-outlet></router-outlet>
+        </div>`,
     directives: [ROUTER_DIRECTIVES],
     providers: [ROUTER_PROVIDERS, provide(LocationStrategy, {useClass: HashLocationStrategy})]
 })

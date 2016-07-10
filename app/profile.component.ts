@@ -53,7 +53,8 @@ import {HTTP_PROVIDERS} from "angular2/http";
 		    </form>
 	    	<p class="submit-message" id="password-message">{{passwordMessage}}</p>
 	    </div>`,
-    styleUrls: ['app/stylesheets/login.css'],
+    host: {'class' : 'ng-animate profileContainer'},
+    styleUrls: ['app/stylesheets/profile.css'],
     directives: [ROUTER_DIRECTIVES],
     providers: [ProfileService, HTTP_PROVIDERS]
 })

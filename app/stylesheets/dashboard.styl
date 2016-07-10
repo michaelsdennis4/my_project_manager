@@ -95,3 +95,16 @@
     margin-bottom 5px
     padding 5px
     text-align left
+
+//transition css
+:host(.dashboardContainer)
+  display inline-block
+  width 100%
+  -webkit-transition all ease-in 0.5s
+  transition all ease-in 0.5s
+
+:host(.dashboardContainer.ng-enter)
+  transform translateX(100%)
+
+:host(.dashboardContainer.ng-enter-active)
+  transform translateX(0)
