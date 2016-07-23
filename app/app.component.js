@@ -1,4 +1,4 @@
-System.register(['angular2/core', "angular2/router", "./login.component", "./dashboard.component", "./signup.component", "./profile.component"], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './authenticate.directive', './login.component', './dashboard.component', './signup.component', './profile.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', "angular2/router", "./login.component", "./das
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, router_2, router_3, core_2, login_component_1, dashboard_component_1, signup_component_1, profile_component_1;
+    var core_1, router_1, authenticate_directive_1, router_2, router_3, core_2, login_component_1, dashboard_component_1, signup_component_1, profile_component_1;
     var AppComponent;
     return {
         setters:[
@@ -22,6 +22,9 @@ System.register(['angular2/core', "angular2/router", "./login.component", "./das
                 router_1 = router_1_1;
                 router_2 = router_1_1;
                 router_3 = router_1_1;
+            },
+            function (authenticate_directive_1_1) {
+                authenticate_directive_1 = authenticate_directive_1_1;
             },
             function (login_component_1_1) {
                 login_component_1 = login_component_1_1;
@@ -41,6 +44,7 @@ System.register(['angular2/core', "angular2/router", "./login.component", "./das
                 }
                 AppComponent = __decorate([
                     router_1.RouteConfig([
+                        { path: '/', redirectTo: ['Dashboard'] },
                         { path: '/login', name: 'Login', component: login_component_1.LoginComponent, useAsDefault: true },
                         { path: '/signup', name: 'SignUp', component: signup_component_1.SignUpComponent },
                         { path: '/profile', name: 'Profile', component: profile_component_1.ProfileComponent },
@@ -48,9 +52,9 @@ System.register(['angular2/core', "angular2/router", "./login.component", "./das
                         { path: '/*other', name: 'Other', redirectTo: ['Login'] }
                     ]),
                     core_1.Component({
-                        selector: 'my-app',
-                        template: "\n        <div>\n            <router-outlet></router-outlet>\n        </div>",
-                        directives: [router_1.ROUTER_DIRECTIVES],
+                        selector: 'project-manager',
+                        template: '<router-outlet></router-outlet>',
+                        directives: [authenticate_directive_1.AuthenticateRouterOutlet],
                         providers: [router_1.ROUTER_PROVIDERS, core_2.provide(router_3.LocationStrategy, { useClass: router_2.HashLocationStrategy })]
                     }), 
                     __metadata('design:paramtypes', [])

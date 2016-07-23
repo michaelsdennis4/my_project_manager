@@ -36,10 +36,11 @@ System.register(['angular2/core', "angular2/router", "./login.service", "angular
                     this._router = _router;
                 }
                 BannerComponent.prototype.onLogout = function () {
+                    var _this = this;
                     var self = this;
                     this._loginService.logout().subscribe(function (result) {
                         if (result.message === 'ok') {
-                            self._router.navigate(['Login']);
+                            _this._router.navigate(['Login']);
                         }
                         else {
                             console.log(result.message);
@@ -49,7 +50,7 @@ System.register(['angular2/core', "angular2/router", "./login.service", "angular
                 BannerComponent = __decorate([
                     core_1.Component({
                         selector: 'banner',
-                        template: "\n        <div class=\"container banner\" id=\"banner\">\n            <div class=\"container upper-banner\" id=\"upper-banner\">\n\t\t\t    <a href=\"/projects/new\">New Project</a>\n\t\t    \t<a [routerLink]=\"['Profile']\">Edit Profile</a>\n\t\t    \t<a href=\"\" (click)=\"onLogout\">Logout</a>\n\t\t    </div>\n\t\t    <div class=\"container lower-banner\" id=\"lower-banner\">\n\t\t    \tProduct Development Manager Dashboard\n\t\t    </div>\n\t    </div>",
+                        template: "\n        <div class=\"container banner\" id=\"banner\">\n            <div class=\"container upper-banner\" id=\"upper-banner\">\n\t\t\t    <a href=\"/projects/new\">New Project</a>\n\t\t    \t<a [routerLink]=\"['Profile']\">Edit Profile</a>\n\t\t    \t<a href=\"\" (click)=\"onLogout()\">Logout</a>\n\t\t    </div>\n\t\t    <div class=\"container lower-banner\" id=\"lower-banner\">\n\t\t    \tProduct Development Manager Dashboard\n\t\t    </div>\n\t    </div>",
                         styleUrls: ['app/stylesheets/dashboard.css'],
                         directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [login_service_1.LoginService, http_1.HTTP_PROVIDERS]

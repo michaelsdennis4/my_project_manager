@@ -14,7 +14,7 @@ import {HTTP_PROVIDERS} from "angular2/http";
             <div class="container upper-banner" id="upper-banner">
 			    <a href="/projects/new">New Project</a>
 		    	<a [routerLink]="['Profile']">Edit Profile</a>
-		    	<a href="" (click)="onLogout">Logout</a>
+		    	<a href="" (click)="onLogout()">Logout</a>
 		    </div>
 		    <div class="container lower-banner" id="lower-banner">
 		    	Product Development Manager Dashboard
@@ -31,7 +31,7 @@ export class BannerComponent {
         let self = this;
         this._loginService.logout().subscribe(result => {
             if (result.message === 'ok') {
-               self._router.navigate(['Login']);
+               this._router.navigate(['Login']);
             } else {
                 console.log(result.message);
             }

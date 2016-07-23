@@ -41,7 +41,7 @@ MongoClient.connect(mongoUri, function(error, db) {
 
     app.post('/authenticate', function(req, res) {
         db.collection('users').find({email: req.body.email}).toArray(function(error, results) {
-            if ((error) || (results.length == 0)) {
+            if ((error) || (results.length !== 1)) {
                 res.json({message: 'Incorrect username/password'});
             }
             else {
@@ -58,6 +58,15 @@ MongoClient.connect(mongoUri, function(error, db) {
                 }
             }
         });
+    });
+
+    app.get('/logged', function(req, res) {
+        console.log('logged is hit');
+        if ((req.session.user_id) && (req.session.username)) {
+            res.json({message: 'ok'});
+        } else {
+            res.json({message: 'login'});
+        }
     });
 
     app.get('/users', function(req, res){
@@ -206,8 +215,9 @@ MongoClient.connect(mongoUri, function(error, db) {
     });
 
     app.get('/logout', function(req, res) {
-        req.session.user_id = null;
-        req.session.username = null;
+        delete req.session.user_id;
+        delete req.session.username;
+        console.log('user logged out');
         req.session.destroy(function(err) {
             if (err) {
                 console.log(err);

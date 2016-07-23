@@ -2,14 +2,14 @@
  * Created by Michael on 6/12/16.
  */
 
-import {Component} from 'angular2/core';
-import {Router, ROUTER_DIRECTIVES} from "angular2/router";
+import {Component, OnInit} from 'angular2/core';
+import {Router, ROUTER_DIRECTIVES} from 'angular2/router';
 
-import {ProjectSelectorComponent} from "./project_selector.component";
-import {WireframesComponent} from "./wireframes.component";
-import {UserStoriesComponent} from "./user_stories.component";
-import {BannerComponent} from "./banner.component";
-import {TaskListComponent} from "./task_list.component";
+import {ProjectSelectorComponent} from './project_selector.component';
+import {WireframesComponent} from './wireframes.component';
+import {UserStoriesComponent} from './user_stories.component';
+import {BannerComponent} from './banner.component';
+import {TaskListComponent} from './task_list.component';
 
 @Component({
     selector: 'dashboard',
@@ -40,4 +40,4 @@ import {TaskListComponent} from "./task_list.component";
         BannerComponent
     ]
 })
-export class DashboardComponent {}
+export class DashboardComponent { }

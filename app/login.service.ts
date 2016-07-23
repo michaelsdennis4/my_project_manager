@@ -25,11 +25,13 @@ export class LoginService {
         }).map(res => res.json());
 
     }
+
+    isLoggedIn() {
+        return this._http.get('/logged').map(res => res.json());
+    }
     
     logout() {
         return this._http.get('/logout').map(res => res.json());
     }
-    
-    
 
 }

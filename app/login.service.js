@@ -40,6 +40,9 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], fun
                         headers: headers
                     }).map(function (res) { return res.json(); });
                 };
+                LoginService.prototype.isLoggedIn = function () {
+                    return this._http.get('/logged').map(function (res) { return res.json(); });
+                };
                 LoginService.prototype.logout = function () {
                     return this._http.get('/logout').map(function (res) { return res.json(); });
                 };

@@ -1,7 +1,7 @@
 /**
  * Created by Michael on 6/12/16.
  */
-System.register(['angular2/core', "angular2/router", "./project_selector.component", "./wireframes.component", "./user_stories.component", "./banner.component", "./task_list.component"], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './project_selector.component', './wireframes.component', './user_stories.component', './banner.component', './task_list.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
