@@ -10,7 +10,6 @@ import {WireframesComponent} from './wireframes.component';
 import {UserStoriesComponent} from './user_stories.component';
 import {BannerComponent} from './banner.component';
 import {TaskListComponent} from './task_list.component';
-import {ModalComponent} from "./modal.component";
 
 @Component({
     selector: 'dashboard',
@@ -39,8 +38,7 @@ import {ModalComponent} from "./modal.component";
         WireframesComponent,
         UserStoriesComponent,
         TaskListComponent,
-        BannerComponent,
-        ModalComponent
+        BannerComponent
     ]
 })
 export class DashboardComponent { }

@@ -6,7 +6,7 @@ import {Component, OnInit} from 'angular2/core';
 import {Router, ROUTER_DIRECTIVES} from 'angular2/router';
 import {LoginService} from "./login.service";
 import {HTTP_PROVIDERS} from 'angular2/http';
-import {ModalComponent} from './modal.component';
+import {ProjectModalComponent} from './project_modal.component';
 import {IModalShown} from "./interfaces";
 
 // interface IModalShown {
@@ -26,10 +26,10 @@ import {IModalShown} from "./interfaces";
 		    	Product Development Manager Dashboard
 		    </div>
 	    </div>
-	    <modal [show-modal]="isModalShown"></modal>
+	    <project-modal [show-modal]="isModalShown"></project-modal>
         `,
     styleUrls: ['app/stylesheets/dashboard.css'],
-    directives: [ROUTER_DIRECTIVES, ModalComponent],
+    directives: [ROUTER_DIRECTIVES, ProjectModalComponent],
     providers: [LoginService, HTTP_PROVIDERS]
 })
 export class BannerComponent implements OnInit {

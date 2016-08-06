@@ -1,7 +1,7 @@
 /**
  * Created by Michael on 6/6/16.
  */
-System.register(['angular2/core', 'angular2/router', "./login.service", 'angular2/http', './modal.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', "./login.service", 'angular2/http', './project_modal.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -13,7 +13,7 @@ System.register(['angular2/core', 'angular2/router', "./login.service", 'angular
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, login_service_1, http_1, modal_component_1;
+    var core_1, router_1, login_service_1, http_1, project_modal_component_1;
     var BannerComponent;
     return {
         setters:[
@@ -29,8 +29,8 @@ System.register(['angular2/core', 'angular2/router', "./login.service", 'angular
             function (http_1_1) {
                 http_1 = http_1_1;
             },
-            function (modal_component_1_1) {
-                modal_component_1 = modal_component_1_1;
+            function (project_modal_component_1_1) {
+                project_modal_component_1 = project_modal_component_1_1;
             }],
         execute: function() {
             // interface IModalShown {
@@ -66,9 +66,9 @@ System.register(['angular2/core', 'angular2/router', "./login.service", 'angular
                 BannerComponent = __decorate([
                     core_1.Component({
                         selector: 'banner',
-                        template: "\n        <div class=\"container banner\" id=\"banner\">\n            <div class=\"container upper-banner\" id=\"upper-banner\">\n                <a href=\"\" (click)=\"onNewProject($event)\">New Project</a>\n\t\t    \t<a [routerLink]=\"['Profile']\">Edit Profile</a>\n\t\t    \t<a href=\"\" (click)=\"onLogout($event)\">Logout</a>\n\t\t    </div>\n\t\t    <div class=\"container lower-banner\" id=\"lower-banner\">\n\t\t    \tProduct Development Manager Dashboard\n\t\t    </div>\n\t    </div>\n\t    <modal [show-modal]=\"isModalShown\"></modal>\n        ",
+                        template: "\n        <div class=\"container banner\" id=\"banner\">\n            <div class=\"container upper-banner\" id=\"upper-banner\">\n                <a href=\"\" (click)=\"onNewProject($event)\">New Project</a>\n\t\t    \t<a [routerLink]=\"['Profile']\">Edit Profile</a>\n\t\t    \t<a href=\"\" (click)=\"onLogout($event)\">Logout</a>\n\t\t    </div>\n\t\t    <div class=\"container lower-banner\" id=\"lower-banner\">\n\t\t    \tProduct Development Manager Dashboard\n\t\t    </div>\n\t    </div>\n\t    <project-modal [show-modal]=\"isModalShown\"></project-modal>\n        ",
                         styleUrls: ['app/stylesheets/dashboard.css'],
-                        directives: [router_1.ROUTER_DIRECTIVES, modal_component_1.ModalComponent],
+                        directives: [router_1.ROUTER_DIRECTIVES, project_modal_component_1.ProjectModalComponent],
                         providers: [login_service_1.LoginService, http_1.HTTP_PROVIDERS]
                     }), 
                     __metadata('design:paramtypes', [login_service_1.LoginService, router_1.Router])

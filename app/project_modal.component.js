@@ -14,7 +14,7 @@ System.register(['angular2/core', "./modal.directive"], function(exports_1, cont
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, modal_directive_1;
-    var ModalComponent;
+    var ProjectModalComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -24,27 +24,27 @@ System.register(['angular2/core', "./modal.directive"], function(exports_1, cont
                 modal_directive_1 = modal_directive_1_1;
             }],
         execute: function() {
-            ModalComponent = (function () {
-                function ModalComponent() {
+            ProjectModalComponent = (function () {
+                function ProjectModalComponent() {
                 }
-                ModalComponent.prototype.onClose = function ($event) {
+                ProjectModalComponent.prototype.onClose = function ($event) {
                     $event.preventDefault();
                     this.isModalShown.show = false;
                 };
-                ModalComponent = __decorate([
+                ProjectModalComponent = __decorate([
                     core_1.Component({
-                        selector: 'modal',
-                        template: "\n        <div class=\"modalDialog\" [modal-show]=\"isModalShown\">\n\t\t    <div class=\"modalDialogWindow\">\n\t\t\t    <a href=\"\" title=\"Close\" class=\"close\" (click)=\"onClose($event)\">X</a>\n\t\t\t    <h1>This is a modal</h1>\n\t\t    </div>\n\t\t</div>",
+                        selector: 'project-modal',
+                        template: "\n        <div class=\"modalDialog\" [modal-show]=\"isModalShown\">\n\t\t    <div class=\"modalDialogWindow\">\n\t\t\t    <a href=\"\" title=\"Close\" class=\"close\" (click)=\"onClose($event)\">X</a>\n\t\t\t    <h1>Add a New Project</h1>\n\t\t\t    <form>\n\t\t\t        <label for=\"name\">Project Name:</label><br>\n\t\t\t        <input type=\"text\" id=\"name\" ngControl=\"name\"/><br>\n\t\t\t        <label for=\"repo\">Git Repo</label><br>\n\t\t\t        <input type=\"text\" id=\"repo\" ngControl=\"repo\"/><br>\n\t\t\t        <label for=\"url\">URL</label><br>\n\t\t\t        <input type=\"text\" id=\"url\" ngControl=\"url\"/><br>\n\t\t\t        <label for=\"description\">Description:</label><br>\n\t\t\t        <textarea id=\"description\" ngControl=\"description\"></textarea><br>\n\t\t\t        <br>\n\t\t\t        <input type=\"submit\" value=\"Create New Project\"/>\n                </form>\n\t\t    </div>\n\t\t</div>",
                         directives: [modal_directive_1.ModalDirective],
                         styleUrls: ['app/stylesheets/modal.css'],
                         inputs: ['isModalShown:show-modal']
                     }), 
                     __metadata('design:paramtypes', [])
-                ], ModalComponent);
-                return ModalComponent;
+                ], ProjectModalComponent);
+                return ProjectModalComponent;
             }());
-            exports_1("ModalComponent", ModalComponent);
+            exports_1("ProjectModalComponent", ProjectModalComponent);
         }
     }
 });
-//# sourceMappingURL=modal.component.js.map
+//# sourceMappingURL=project_modal.component.js.map
