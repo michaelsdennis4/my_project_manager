@@ -1,7 +1,7 @@
 /**
  * Created by Michael on 6/12/16.
  */
-System.register(['angular2/core', 'angular2/router', './project_selector.component', './wireframes.component', './user_stories.component', './banner.component', './task_list.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './project_selector.component', './wireframes.component', './user_stories.component', './banner.component', './task_list.component', "./modal.component"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -13,7 +13,7 @@ System.register(['angular2/core', 'angular2/router', './project_selector.compone
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, project_selector_component_1, wireframes_component_1, user_stories_component_1, banner_component_1, task_list_component_1;
+    var core_1, router_1, project_selector_component_1, wireframes_component_1, user_stories_component_1, banner_component_1, task_list_component_1, modal_component_1;
     var DashboardComponent;
     return {
         setters:[
@@ -37,6 +37,9 @@ System.register(['angular2/core', 'angular2/router', './project_selector.compone
             },
             function (task_list_component_1_1) {
                 task_list_component_1 = task_list_component_1_1;
+            },
+            function (modal_component_1_1) {
+                modal_component_1 = modal_component_1_1;
             }],
         execute: function() {
             DashboardComponent = (function () {
@@ -45,7 +48,7 @@ System.register(['angular2/core', 'angular2/router', './project_selector.compone
                 DashboardComponent = __decorate([
                     core_1.Component({
                         selector: 'dashboard',
-                        template: "\n        <div class=\"dashboard\"> \n            <banner></banner>\n            <div class=\"container left-panel\" id=\"left-panel\"> \n                <div class=\"container upper-left-section\" id=\"upper-left-section\">\n                    <project-selector></project-selector>\t\n                    <wireframes></wireframes>\n                </div>\n                <div class=\"container lower-left-section\" id=\"lower-left-section\">\n                    <user-stories></user-stories>\n                </div>\n            </div>    \n            <div class=\"container right-panel\" id=\"right-panel\">\n                <task-list></task-list>\n            </div> \n\t    </div>",
+                        template: "\n        <div class=\"dashboard\"> \n            <banner></banner>\n            <div class=\"container left-panel\" id=\"left-panel\"> \n                <div class=\"container upper-left-section\" id=\"upper-left-section\">\n                    <project-selector></project-selector>\t\n                    <wireframes></wireframes>\n                </div>\n                <div class=\"container lower-left-section\" id=\"lower-left-section\">\n                    <user-stories></user-stories>\n                </div>\n            </div>    \n            <div class=\"container right-panel\" id=\"right-panel\">\n                <task-list></task-list>\n            </div> \n\t    </div>\n        ",
                         host: { 'class': 'ng-animate dashboardContainer' },
                         styleUrls: ['app/stylesheets/dashboard.css'],
                         directives: [
@@ -54,7 +57,8 @@ System.register(['angular2/core', 'angular2/router', './project_selector.compone
                             wireframes_component_1.WireframesComponent,
                             user_stories_component_1.UserStoriesComponent,
                             task_list_component_1.TaskListComponent,
-                            banner_component_1.BannerComponent
+                            banner_component_1.BannerComponent,
+                            modal_component_1.ModalComponent
                         ]
                     }), 
                     __metadata('design:paramtypes', [])

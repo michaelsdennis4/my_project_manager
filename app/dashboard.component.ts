@@ -10,6 +10,7 @@ import {WireframesComponent} from './wireframes.component';
 import {UserStoriesComponent} from './user_stories.component';
 import {BannerComponent} from './banner.component';
 import {TaskListComponent} from './task_list.component';
+import {ModalComponent} from "./modal.component";
 
 @Component({
     selector: 'dashboard',
@@ -28,7 +29,8 @@ import {TaskListComponent} from './task_list.component';
             <div class="container right-panel" id="right-panel">
                 <task-list></task-list>
             </div> 
-	    </div>`,
+	    </div>
+        `,
     host: {'class' : 'ng-animate dashboardContainer'},
     styleUrls: ['app/stylesheets/dashboard.css'],
     directives: [
@@ -37,7 +39,8 @@ import {TaskListComponent} from './task_list.component';
         WireframesComponent,
         UserStoriesComponent,
         TaskListComponent,
-        BannerComponent
+        BannerComponent,
+        ModalComponent
     ]
 })
 export class DashboardComponent { }

@@ -69,6 +69,20 @@ MongoClient.connect(mongoUri, function(error, db) {
         }
     });
 
+    app.get('/logout', function(req, res) {
+        delete req.session.user_id;
+        delete req.session.username;
+        console.log('user logged out');
+        req.session.destroy(function(err) {
+            if (err) {
+                console.log(err);
+                res.json({message: err});
+            } else {
+                res.json({message: 'ok'});
+            }
+        });
+    });
+
     app.get('/users', function(req, res){
         db.collection('users').find({_id: ObjectId(req.session.user_id)}).toArray(function(error, users) {
             if (users.length === 1) {
@@ -214,19 +228,34 @@ MongoClient.connect(mongoUri, function(error, db) {
         }
     });
 
-    app.get('/logout', function(req, res) {
-        delete req.session.user_id;
-        delete req.session.username;
-        console.log('user logged out');
-        req.session.destroy(function(err) {
-            if (err) {
-                console.log(err);
-                res.json({message: err});
+    app.post('/projects', function(req, res) {
+        if ((req.session.user_id) && (req.session.user_id != null)) {
+            if (req.body.name.length === 0) {
+                res.json({message: 'Project must have a name.'});
             } else {
-                res.json({message: 'ok'});
+                var newProject = {
+                    _id: ObjectId(),
+                    title: req.body.name,
+                    description: req.body.description,
+                    repo: req.body.repo,
+                    url: req.body.url
+                };
+                db.collection('users').updateOne({_id: ObjectId(req.session.user_id)},
+                    {$push: {projects: newProject}}, function(error, results) {
+                        if (!error) {
+                            res.json({message: 'ok'});
+                        } else {
+                            res.json({message: 'Error creating course'});
+                        }
+                    });
             }
-        });
+        } else {
+            res.json({message: 'login'});
+        }
     });
+
+
+
 
 });
 
