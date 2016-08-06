@@ -33,17 +33,21 @@ System.register(['angular2/core', 'angular2/router', "./login.service", 'angular
                 modal_component_1 = modal_component_1_1;
             }],
         execute: function() {
+            // interface IModalShown {
+            //     show: boolean;
+            // }
             BannerComponent = (function () {
                 function BannerComponent(_loginService, _router) {
                     this._loginService = _loginService;
                     this._router = _router;
+                    this.isModalShown = { show: false };
                 }
                 BannerComponent.prototype.ngOnInit = function () {
-                    this.isModalShown = false;
+                    this.isModalShown.show = false;
                 };
                 BannerComponent.prototype.onNewProject = function ($event) {
                     $event.preventDefault();
-                    this.isModalShown = true;
+                    this.isModalShown.show = true;
                 };
                 BannerComponent.prototype.onLogout = function ($event) {
                     var _this = this;
@@ -62,7 +66,7 @@ System.register(['angular2/core', 'angular2/router', "./login.service", 'angular
                 BannerComponent = __decorate([
                     core_1.Component({
                         selector: 'banner',
-                        template: "\n        <div class=\"container banner\" id=\"banner\">\n            <div class=\"container upper-banner\" id=\"upper-banner\">\n                <a href=\"\" (click)=\"onNewProject($event)\">New Project</a>\n\t\t    \t<a [routerLink]=\"['Profile']\">Edit Profile</a>\n\t\t    \t<a href=\"\" (click)=\"onLogout($event)\">Logout</a>\n\t\t    </div>\n\t\t    <div class=\"container lower-banner\" id=\"lower-banner\">\n\t\t    \tProduct Development Manager Dashboard\n\t\t    </div>\n\t    </div>\n\t    <modal [isModalShown]=\"isModalShown\"></modal>\n        ",
+                        template: "\n        <div class=\"container banner\" id=\"banner\">\n            <div class=\"container upper-banner\" id=\"upper-banner\">\n                <a href=\"\" (click)=\"onNewProject($event)\">New Project</a>\n\t\t    \t<a [routerLink]=\"['Profile']\">Edit Profile</a>\n\t\t    \t<a href=\"\" (click)=\"onLogout($event)\">Logout</a>\n\t\t    </div>\n\t\t    <div class=\"container lower-banner\" id=\"lower-banner\">\n\t\t    \tProduct Development Manager Dashboard\n\t\t    </div>\n\t    </div>\n\t    <modal [show-modal]=\"isModalShown\"></modal>\n        ",
                         styleUrls: ['app/stylesheets/dashboard.css'],
                         directives: [router_1.ROUTER_DIRECTIVES, modal_component_1.ModalComponent],
                         providers: [login_service_1.LoginService, http_1.HTTP_PROVIDERS]

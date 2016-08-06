@@ -2,8 +2,9 @@
  * Created by Michael on 7/23/16.
  */
 
-import {Component, Input} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 import {ModalDirective} from "./modal.directive";
+import {IModalShown} from "./interfaces";
 
 @Component({
     selector: 'modal',
@@ -15,14 +16,15 @@ import {ModalDirective} from "./modal.directive";
 		    </div>
 		</div>`,
     directives: [ModalDirective],
-    styleUrls: ['app/stylesheets/modal.css']
+    styleUrls: ['app/stylesheets/modal.css'],
+    inputs: ['isModalShown:show-modal']
 })
 export class ModalComponent {
 
-    @Input('isModalShown') isModalShown: boolean;
+    public isModalShown: IModalShown;
 
     onClose($event) {
         $event.preventDefault();
-        this.isModalShown = false;
+        this.isModalShown.show = false;
     }
 }

@@ -28,14 +28,14 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 }
                 Object.defineProperty(ModalDirective.prototype, "setState", {
                     get: function () {
-                        return this.modalShow;
+                        return this.modalShow.show;
                     },
                     enumerable: true,
                     configurable: true
                 });
                 __decorate([
                     core_1.Input('modal-show'), 
-                    __metadata('design:type', Boolean)
+                    __metadata('design:type', Object)
                 ], ModalDirective.prototype, "modalShow", void 0);
                 __decorate([
                     core_1.HostBinding('class.open'), 

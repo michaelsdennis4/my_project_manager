@@ -3,16 +3,17 @@
  */
 
 import {Directive, ElementRef, Renderer, Input, HostBinding} from 'angular2/core';
+import {IModalShown} from "./interfaces";
 
 @Directive({
     selector: '[modal-show]'
 })
 export class ModalDirective {
 
-    @Input('modal-show') modalShow: boolean;
+    @Input('modal-show') modalShow: IModalShown;
 
     @HostBinding('class.open') get setState() {
-        return this.modalShow;
+        return this.modalShow.show;
     }
 
     constructor(private _el: ElementRef,

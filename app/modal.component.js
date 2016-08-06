@@ -29,18 +29,15 @@ System.register(['angular2/core', "./modal.directive"], function(exports_1, cont
                 }
                 ModalComponent.prototype.onClose = function ($event) {
                     $event.preventDefault();
-                    this.isModalShown = false;
+                    this.isModalShown.show = false;
                 };
-                __decorate([
-                    core_1.Input('isModalShown'), 
-                    __metadata('design:type', Boolean)
-                ], ModalComponent.prototype, "isModalShown", void 0);
                 ModalComponent = __decorate([
                     core_1.Component({
                         selector: 'modal',
                         template: "\n        <div class=\"modalDialog\" [modal-show]=\"isModalShown\">\n\t\t    <div class=\"modalDialogWindow\">\n\t\t\t    <a href=\"\" title=\"Close\" class=\"close\" (click)=\"onClose($event)\">X</a>\n\t\t\t    <h1>This is a modal</h1>\n\t\t    </div>\n\t\t</div>",
                         directives: [modal_directive_1.ModalDirective],
-                        styleUrls: ['app/stylesheets/modal.css']
+                        styleUrls: ['app/stylesheets/modal.css'],
+                        inputs: ['isModalShown:show-modal']
                     }), 
                     __metadata('design:paramtypes', [])
                 ], ModalComponent);
