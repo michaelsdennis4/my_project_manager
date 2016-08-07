@@ -230,12 +230,12 @@ MongoClient.connect(mongoUri, function(error, db) {
 
     app.post('/projects', function(req, res) {
         if ((req.session.user_id) && (req.session.user_id != null)) {
-            if (req.body.name.length === 0) {
-                res.json({message: 'Project must have a name.'});
+            if (req.body.title.length === 0) {
+                res.json({message: 'Project must have a title.'});
             } else {
                 var newProject = {
                     _id: ObjectId(),
-                    title: req.body.name,
+                    title: req.body.title,
                     description: req.body.description,
                     repo: req.body.repo,
                     url: req.body.url
@@ -245,7 +245,7 @@ MongoClient.connect(mongoUri, function(error, db) {
                         if (!error) {
                             res.json({message: 'ok'});
                         } else {
-                            res.json({message: 'Error creating course'});
+                            res.json({message: 'Error creating course.'});
                         }
                     });
             }
