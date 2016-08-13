@@ -37,6 +37,7 @@ System.register(['angular2/core', "./modal.directive", "./project.service", "ang
                 function ProjectModalComponent(_projectService, _router) {
                     this._projectService = _projectService;
                     this._router = _router;
+                    this.projectAdded = new core_1.EventEmitter();
                     this.message = "";
                 }
                 ;
@@ -45,6 +46,7 @@ System.register(['angular2/core', "./modal.directive", "./project.service", "ang
                     this._projectService.addNewProject(form).subscribe(function (result) {
                         if (result.message === 'ok') {
                             _this.isModalShown.show = false;
+                            _this.projectAdded.emit({ value: result.message });
                         }
                         else {
                             console.log(result.message);
@@ -63,7 +65,8 @@ System.register(['angular2/core', "./modal.directive", "./project.service", "ang
                         directives: [modal_directive_1.ModalDirective],
                         providers: [project_service_1.ProjectService, http_1.HTTP_PROVIDERS],
                         styleUrls: ['app/stylesheets/modal.css'],
-                        inputs: ['isModalShown:show-modal']
+                        inputs: ['isModalShown:show-modal'],
+                        outputs: ['projectAdded']
                     }), 
                     __metadata('design:paramtypes', [project_service_1.ProjectService, router_1.Router])
                 ], ProjectModalComponent);

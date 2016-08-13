@@ -18,7 +18,7 @@ import {TaskListComponent} from './task_list.component';
             <banner></banner>
             <div class="container left-panel" id="left-panel"> 
                 <div class="container upper-left-section" id="upper-left-section">
-                    <project-selector></project-selector>	
+                    <project-selector [projects]="projects"></project-selector>	
                     <wireframes></wireframes>
                 </div>
                 <div class="container lower-left-section" id="lower-left-section">

@@ -29,5 +29,16 @@ export class ProjectService {
 
     }
 
+    getProjects() {
+
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+        return this._http.get('/projects', {
+            headers: headers
+        }).map(res => res.json());
+
+    }
+
 
 }

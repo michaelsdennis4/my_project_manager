@@ -228,6 +228,25 @@ MongoClient.connect(mongoUri, function(error, db) {
         }
     });
 
+    app.get('/projects', function(req, res) {
+        if ((req.session.user_id) && (req.session.user_id != null)) {
+            db.collection('users').find({_id: ObjectId(req.session.user_id)}).toArray(function(error, users) {
+                if (users.length === 1) {
+                    var user = users[0];
+                    if (user.projects && user.projects.length > 0) {
+                        res.json({message: 'ok', projects: user.projects});
+                    } else {
+                        res.json({message: "No projects found."});
+                    }
+                } else {
+                    res.json({message: 'User not found'});
+                }
+            });
+        } else {
+            res.json({message: 'login'});
+        }
+    });
+
     app.post('/projects', function(req, res) {
         if ((req.session.user_id) && (req.session.user_id != null)) {
             if (req.body.title.length === 0) {

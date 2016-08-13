@@ -42,6 +42,13 @@ System.register(["angular2/core", "angular2/http", 'rxjs/add/operator/map'], fun
                         headers: headers
                     }).map(function (res) { return res.json(); });
                 };
+                ProjectService.prototype.getProjects = function () {
+                    var headers = new http_1.Headers();
+                    headers.append('Content-Type', 'application/json');
+                    return this._http.get('/projects', {
+                        headers: headers
+                    }).map(function (res) { return res.json(); });
+                };
                 ProjectService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [http_1.Http])

@@ -6,48 +6,28 @@ import {Component, OnInit} from 'angular2/core';
 import {Router, ROUTER_DIRECTIVES} from 'angular2/router';
 import {LoginService} from "./login.service";
 import {HTTP_PROVIDERS} from 'angular2/http';
-import {ProjectModalComponent} from './project_modal.component';
-import {IModalShown} from "./interfaces";
-
-// interface IModalShown {
-//     show: boolean;
-// }
 
 @Component({
     selector: 'banner',
     template: `
         <div class="container banner" id="banner">
             <div class="container upper-banner" id="upper-banner">
-                <a href="" (click)="onNewProject($event)">New Project</a>
 		    	<a [routerLink]="['Profile']">Edit Profile</a>
 		    	<a href="" (click)="onLogout($event)">Logout</a>
 		    </div>
 		    <div class="container lower-banner" id="lower-banner">
 		    	Product Development Manager Dashboard
 		    </div>
-	    </div>
-	    <project-modal [show-modal]="isModalShown"></project-modal>
-        `,
+	    </div>`,
     styleUrls: ['app/stylesheets/dashboard.css'],
-    directives: [ROUTER_DIRECTIVES, ProjectModalComponent],
+    directives: [ROUTER_DIRECTIVES],
     providers: [LoginService, HTTP_PROVIDERS]
 })
-export class BannerComponent implements OnInit {
-
-    public isModalShown: IModalShown = {show: false};
+export class BannerComponent {
 
     constructor(private _loginService: LoginService,
                 private _router: Router
     ) { }
-
-    ngOnInit() {
-        this.isModalShown.show = false;
-    }
-
-    onNewProject($event) {
-        $event.preventDefault();
-        this.isModalShown.show = true;
-    }
 
     onLogout($event) {
         $event.preventDefault();

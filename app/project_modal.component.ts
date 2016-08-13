@@ -2,7 +2,7 @@
  * Created by Michael on 7/23/16.
  */
 
-import {Component, OnInit} from 'angular2/core';
+import {Component, OnInit, EventEmitter} from 'angular2/core';
 import {ModalDirective} from "./modal.directive";
 import {IModalShown} from "./interfaces";
 import {ProjectService} from "./project.service";
@@ -33,11 +33,13 @@ import {HTTP_PROVIDERS} from "angular2/http";
     directives: [ModalDirective],
     providers: [ProjectService, HTTP_PROVIDERS],
     styleUrls: ['app/stylesheets/modal.css'],
-    inputs: ['isModalShown:show-modal']
+    inputs: ['isModalShown:show-modal'],
+    outputs: ['projectAdded']
 })
 export class ProjectModalComponent {
 
     public isModalShown: IModalShown;
+    public projectAdded = new EventEmitter();
     private message: string = "";
 
     constructor(private _projectService: ProjectService, private _router: Router) {};
@@ -46,16 +48,12 @@ export class ProjectModalComponent {
         this._projectService.addNewProject(form).subscribe(result => {
             if (result.message === 'ok') {
                 this.isModalShown.show = false;
-
+                this.projectAdded.emit({value: result.message});
             } else {
                 console.log(result.message);
                 this.message = result.message;
-
             }
-
         });
-
-
     }
 
     onClose($event) {
